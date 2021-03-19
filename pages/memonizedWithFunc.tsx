@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useState } from "react";
 
 const Parent = () => {
-  const [text, setText] = useState("");
+  const [parentName, setParentName] = useState("");
   const [childName, setChildName] = useState("");
 
   console.log("i am parent");
@@ -12,12 +12,13 @@ const Parent = () => {
 
   return (
     <div className="Wrapper">
-      <h1>I am Parent</h1>
-      <textarea value={text} onChange={(e) => setText(e.target.value)} />
+      <h1>子供にReact.memo使用していて、子供に渡す関数をuseCallbackしているパターン</h1>
+      <h2>I am Parent</h2>
+      <textarea value={parentName} onChange={(e) => setParentName(e.target.value)} />
       <Child childName={childName} onChange={childNameHandler} />
       <style jsx>{`
         .Wrapper {
-          width: 300px;
+          width: 600px;
           margin: 100px auto;
         }
       `}</style>
@@ -34,7 +35,7 @@ const Child: FC<{
   console.log("i am child");
   return (
     <div>
-      <h1>I am Child</h1>
+      <h2>I am Child</h2>
       <textarea value={childName} onChange={(e) => onChange(e.target.value)} />
       <ul>
         <li>bob</li>
